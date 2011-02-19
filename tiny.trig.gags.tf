@@ -37,4 +37,5 @@
 ;
 /def -p0 -ag -mglob -t'Your swarm of fireflies rushes out before you.'
 ;/def -p0 -ag -mglob -t'Your fox companion sneaks in after you.'
+/def -p0 -ag -mregexp -t'^[\ \t]*$'
 

@@ -60,7 +60,8 @@
     ck %; \
 ;    kt
 
-/def -p0 -mglob -t'A daelid crawls into *' dropd = gd %; drop daelid
+;/def -p0 -mglob -t'A daelid crawls into *' dropd = gd %; drop daelid
+/def -p0 -mglob -t'A daelid crawls into *' dropd = get daelid from boh %; drop daelid
 /def -p0 -mregexp -t'^Cobalt enters.$' zap = kazap cobalt
 
 ;////////////////////////
@@ -82,10 +83,10 @@
 ;--------------------TRIGGERS--------------------;
 
 
-;/def -p0 -mglob -t"*'s power fades back to the ambient." reempowertrig = \
+/def -p0 -mglob -t"*'s power fades back to the ambient." reempowertrig = \
 ;  /set nt%; \
 ;  /set needempower=1 %; \
-;  /repeat -5 1 reempower%; \
+    /repeat -5 1 reempower%; \
 ;  /set nt=1
 
 /def -p0 -mglob -t'Tough bark covers * of your skin.' barkstatus = \
@@ -99,9 +100,6 @@
 
 ;"Inch-long thorns cover xx% of your skin"
 ;"Tough bark covers xx% of your skin"
-
-; gags on empty lines
-/def -p0 -ag -mregexp -t'^[\ \t]*$'
 
 ; services for
 ; other people

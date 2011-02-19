@@ -2,7 +2,8 @@
 /set solo=1
 /set borg=0
 /set playerfriendly=0
-/set nothunting=1
+/set notidle=0
+; (as opposed to not hunting, ie idle)
 
 ;; ### from tiny.macros.timers.tf ###
 /set ticksize=60

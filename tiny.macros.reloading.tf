@@ -19,19 +19,19 @@
 /def -p0 -mglob -h'SEND {hunt}' = \
     /set solo=1 %; \
     /set borg=on%; \
-    /set nothunting=0%; \
-    /set playerfriendly=0%; \
+    /set notidle=1%; \
+    /unset playerfriendly%; \
     reload
 /def -p0 -mglob -h'SEND {friends}' = \
     /unset solo %; \
     /set borg=on%; \
-    /set nothunting=0%; \
+    /set notidle=1%; \
     /set playerfriendly=1%; \
     reload
 /def -p0 -mglob -h'SEND {idle}' = \
 ; whether solo or not doesn't matter
     /set borg=on%; \
-    /set nothunting=1%; \
+    /set notidle=0%; \
     /set playerfriendly=1%; \
     reload
 /def -p0 -mglob -h'SEND {tron}' = /set borg=on %; /set borg
@@ -53,7 +53,7 @@
     /load tiny.macros.timers.tf %; \
     /if (borg =/ 'on') \
 ; hunting check
-        /if (nothunting =/ 0) \
+        /if (notidle =/ 1) \
             /load tiny.trig.hunt.tf %; \
 ; if hunting, is owl check
             /if (owl =/ 1) \
@@ -63,11 +63,10 @@
                 /load tiny.set.retrig.tf %; \
             /endif %; \
         /else \
-            /load tiny.trig.idle.tf %; \
-        /endif %; \
-; friendly check
-        /if (playerfriendly =/ 0) \
-            /load tiny.trig.idle.tf %; \
+; friendly check - otherwise could be being pkd while afk
+            /if (playerfriendly =/ 1) \
+                /load tiny.trig.idle.tf %; \
+            /endif %; \
         /endif %; \
     /endif %; \
     /load tiny.trig.gags.tf %; \
