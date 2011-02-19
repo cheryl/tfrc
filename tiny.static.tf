@@ -2,6 +2,7 @@
 /set solo=1
 /set borg=0
 /set playerfriendly=0
+/set nothunting=1
 
 ;; ### from tiny.macros.timers.tf ###
 /set ticksize=60

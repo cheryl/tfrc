@@ -16,7 +16,24 @@
 ;SOLO subcategory (to disable for friends hunting)
 
 
-/def -p0 -mglob -h'SEND {hunt}' = /set solo=1 %; reload
+/def -p0 -mglob -h'SEND {hunt}' = \
+    /set solo=1 %; \
+    /set borg=on%; \
+    /set nothunting=0%; \
+    /set playerfriendly=0%; \
+    reload
+/def -p0 -mglob -h'SEND {friends}' = \
+    /unset solo %; \
+    /set borg=on%; \
+    /set nothunting=0%; \
+    /set playerfriendly=1%; \
+    reload
+/def -p0 -mglob -h'SEND {idle}' = \
+; whether solo or not doesn't matter
+    /set borg=on%; \
+    /set nothunting=1%; \
+    /set playerfriendly=1%; \
+    reload
 /def -p0 -mglob -h'SEND {tron}' = /set borg=on %; /set borg
 /def -p0 -mglob -h'SEND {troff}' = /set borg=off %; /set borg
 /def -p0 -mglob -h'SEND {tog}' = \
@@ -25,29 +42,39 @@
   /elseif (borg =/ 'on') \
     troff %; \
   /endif
-/def -p0 -mglob -h'SEND {friends}' = /unset solo %; reload
-/def -p0 -mglob -h'SEND {ships}' = ship%; rest%; tron %; /load tiny.trig.shipbot.tf %; cheavy %; xfal
 
+/def -p0 -mglob -h'SEND {ships}' = ship%; rest%; tron %; /load tiny.trig.shipbot.tf %; cheavy %; xfal
 /def -p0 -mglob -i -h'SEND {reload}' = /purge %; \
-  /load tiny.bind.tf %; \
-  /load tiny.macros.reloading.tf %; \
-  /load tiny.macros.combat.tf %; \
-  /load tiny.macros.organise.tf %; \
-  /load tiny.macros.travelling.tf %; \
-  /load tiny.macros.timers.tf %; \
-  /load tiny.trig.hunt.tf %; \
-  /if (owl =/ 1) \
-    /load tiny.trig.owlhpbot.tf %; \
-  /else \
-    /load tiny.trig.hpbot.tf %; \
-    /load tiny.set.retrig.tf %; \
-  /endif %; \
-  /load tiny.trig.gags.tf %; \
-  tron
-;
-;
-;
-;
+    /load tiny.bind.tf %; \
+    /load tiny.macros.reloading.tf %; \
+    /load tiny.macros.combat.tf %; \
+    /load tiny.macros.organise.tf %; \
+    /load tiny.macros.travelling.tf %; \
+    /load tiny.macros.timers.tf %; \
+    /if (borg =/ 'on') \
+; hunting check
+        /if (nothunting =/ 0) \
+            /load tiny.trig.hunt.tf %; \
+; if hunting, is owl check
+            /if (owl =/ 1) \
+                /load tiny.trig.owlhpbot.tf %; \
+            /else \
+                /load tiny.trig.hpbot.tf %; \
+                /load tiny.set.retrig.tf %; \
+            /endif %; \
+        /else \
+            /load tiny.trig.idle.tf %; \
+        /endif %; \
+; friendly check
+        /if (playerfriendly =/ 0) \
+            /load tiny.trig.idle.tf %; \
+        /endif %; \
+    /endif %; \
+    /load tiny.trig.gags.tf %; \
+    tron
+
+
+
 ; add-on triggers
 ;
 /def -p0 -mglob -h'SEND {lootl}' = /load tiny.trig.lootbot.tf

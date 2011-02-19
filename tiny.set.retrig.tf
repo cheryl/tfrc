@@ -34,25 +34,3 @@
 ;    bk %; \
 ;    /set needbk=0 %; \
   /endif
-
-;--------------------TRIGGERS--------------------;
-
-
-;/def -p0 -mglob -t"*'s power fades back to the ambient." reempowertrig = \
-;  /set nt%; \
-;  /set needempower=1 %; \
-;  /repeat -5 1 reempower%; \
-;  /set nt=1
-
-/def -p0 -mglob -t'Tough bark covers * of your skin.' barkstatus = \
-  /set bstatus=$[strcat(substr({L4}, 0, (strlen({L4})-1)))] %; \
-  /if (bstatus <= 8) \
-    /set needbk=1 %; \
-  /endif
-
-/def -p0 -mglob -c60 -t'Your toughened barkskin absorbs some damage.' bkdamage = bst
-
-
-;"Inch-long thorns cover xx% of your skin"
-;"Tough bark covers xx% of your skin"
-

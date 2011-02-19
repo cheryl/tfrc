@@ -2,28 +2,6 @@
 ;; syöttä (imperative "feed")
 ;; (2, 4, 3) action triggers
 
-/def -p0 -mglob -t'* asks you: Know anything about *'  = \
-    /set oldt=$[t]%; \
-    /setdecapitalise %1%; \
-    /set friend=$[t]%; \
-    /set t=$[oldt]%; \
-    /set skill=$[strcat(tolower(substr({L1}, 0, 1)), tolower(substr({L1}, 1, (strlen({L1})-2))))] %; \
-    /if (no_moonbathe =/ 1) \
-        shake%; \
-        whisper %{friend} timer's not up yet, friend.%; \
-    /else \
-;        /if (friend =/ '{araska|hirilonde|nisral|shandie|nimue|katelynn|cynan|calyril|krix}') \
-            /if (owl =/ 1) \
-                owlr%; \
-            /endif %; \
-            %{skill} %{friend}%; \
-;        /else \
-;            shrug%; \
-;        /endif%; \
-    /endif %; \
-    /unset oldt %; \
-    /unset friend %; \
-
 /def -E'solo' -p0 -mglob -t'The combat is over.' endcombat = \
   /if (fastrc !/ '{Butterfly|Bumblebee|Dwarf}') \
     get all %; \
@@ -99,6 +77,28 @@
     /set no_moonbathe=1%; \
     /repeat -151 1 /echo -a -p @{BCcyan} You can moonbathe again.@{x}%; \
     /repeat -151 1 /unset no_moonbathe %; \
+
+
+;--------------------TRIGGERS--------------------;
+
+
+;/def -p0 -mglob -t"*'s power fades back to the ambient." reempowertrig = \
+;  /set nt%; \
+;  /set needempower=1 %; \
+;  /repeat -5 1 reempower%; \
+;  /set nt=1
+
+/def -p0 -mglob -t'Tough bark covers * of your skin.' barkstatus = \
+  /set bstatus=$[strcat(substr({L4}, 0, (strlen({L4})-1)))] %; \
+  /if (bstatus <= 8) \
+    /set needbk=1 %; \
+  /endif
+
+/def -p0 -mglob -c60 -t'Your toughened barkskin absorbs some damage.' bkdamage = bst
+
+
+;"Inch-long thorns cover xx% of your skin"
+;"Tough bark covers xx% of your skin"
 
 ; gags on empty lines
 /def -p0 -ag -mregexp -t'^[\ \t]*$'
