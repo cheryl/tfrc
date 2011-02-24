@@ -37,3 +37,11 @@
 ;/def -p0 -mglob -h'SEND {tickset}' = tickoff %; tickon %*
 
 /def -p0 -mglob -h'SEND {ticksize}' = /set ticksize %*
+
+/def -E'playerfriendly' -p0 -mglob -h'SEND {check}' = \
+    clanwho%; \
+    /repeat -20 1 check%; \
+    /set _check_pid=%?
+
+/def -E'playerfriendly' -p0 -mglob -h'SEND {nocheck}' = \
+    /kill %{_check_pid}

@@ -49,6 +49,7 @@
 
 /def -p0 -mglob -h'SEND {weps}' = /set wep=staff
 /def -p0 -mglob -h'SEND {wepw}' = /set wep=wand
+/def -p0 -mglob -h'SEND {wepb}' = /set wep=baton
 /def -p0 -mglob -h'SEND {ever}' = retrieve %{wep}
 /def -p0 -mglob -h'SEND {eve}' = empower %{wep} with %{elementvar}
 /def -p0 -mglob -h'SEND {eves}' = eve %; store %{wep}
@@ -60,14 +61,17 @@
   /if (anytarget =~ 0) %; \
     %{dirvar}%; \
     /repeat -3 1 shunt %; \
+    /set _shunt_pid=%?%;\
     /echo -a -p @{Ccyan}shuntr@{n} stops shunt when not in combat %; \
     /set shuntsteps=$[shuntsteps + 1]%; \
   /endif %; \
   /set dirvar%; \
   /set oldshunt%; \
   /set shuntsteps%; \
-  /if (shuntsteps >= 14)%; \
-    /if (oldshunt < 14)%; \
+; bogs: 14.
+; vest: 19.
+  /if (shuntsteps >= 19)%; \
+    /if (oldshunt < 19)%; \
       troff%; \
       dvr%; \
       /repeat -1 4 south %; \
@@ -80,22 +84,25 @@
   /endif
 
 /def -p0 -mglob -h'SEND {shuntr}' = \
-        /set anytarget=1%; \
-        /set shuntsteps%; \
-        troff
+    /kill _shunt_pid%; \
+    /set anytarget=1%; \
+    /set shuntsteps
+
 /def -p0 -mglob -h'SEND {dvr}' = \
         /if (dirvar =/ '{east|e}') \
-                /set dirvar=west %; \
+                /set dirvar=go west %; \
         /elseif (dirvar =/ '{west|e}') \
-                /set dirvar=east %; \
+                /set dirvar=go east %; \
         /endif %; \
         /set oldshunt=$[shuntsteps]%; \
         /set shuntsteps=0%; \
         dv
+
 /def -p0 -mglob -h'SEND {dv}' = \
         /set dirvar%; \
         /set oldshunt%; \
         /set shuntsteps
+
 
 ; Apparently random combinations of attacks
 ;
@@ -107,6 +114,7 @@
 /def -p0 -mglob -h'SEND {5l20}' = 1l %; /repeat -20 4 1l
 /def -p0 -mglob -h'SEND {2m30}' = 1m %; /repeat -30 1 1m
 /def -p0 -mglob -h'SEND {3m30}' = 1m %; /repeat -30 2 1m
+
 ;
 ; and Rej's
 ;

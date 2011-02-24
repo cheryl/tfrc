@@ -1,5 +1,6 @@
 
-/def -E'playerfriendly' -p0 -mglob -t'* asks you: Know anything about *' = \
+; ask me about trigger
+/def -E'playerfriendly' -p0 -mglob -t'* asks you: Know anything about *' trigaskme = \
 ;/def -p0 -mregexp -t'^[a-zA-Z]* beeps you on the nose.$'  = \
     /set oldt=$[t]%; \
     /setdecapitalise %1%; \
@@ -24,8 +25,10 @@
     /endif %; \
     /unset oldt %; \
     /unset friend %; \
+; end of ask me about trigger
 
-/def -E'playerfriendly' -p0 -mregexp -t'^-\*\[Harmony]\*- [A-Za-z]* [A-Za-z]*: clanlink$' = \
+; clan trigger
+/def -E'playerfriendly' -p0 -mregexp -t'^-\*\[Harmony]\*- [A-Za-z]* [A-Za-z]*: clanlink$' trigclan = \
     /set oldt=$[t]%; \
     /setdecapitalise %3%; \
     /set clannie=$[t]%; \
@@ -38,4 +41,15 @@
 ;    /endif %; \
     /unset oldt %; \
     /unset clannie %; \
+; end of clan trigger
+
+; beep trigger
+/def -p0 -mregexp -t'^[a-zA-Z]* beeps you on the nose.$' trigbeep = \
+    /set oldt=$[t]%; \
+    /setdecapitalise %3%; \
+    /set target=$[t]%; \
+    /set t=$[oldt]%; \
+    give all stone to %{target}%; \
+    t %{target} I'm idle.
+; end of beep trigger
 

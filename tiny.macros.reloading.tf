@@ -96,11 +96,13 @@
 
 /def -p0 -mglob -h'SEND {owlc}' = \
   shapechange %; \
-  /set owl=1 %; \
+  /set owl=1%; \
+  /unset notowl%;\
   hunt
 /def -p0 -mglob -h'SEND {owlr}' = \
   shapechange revert %; \
   /unset owl %; \
+  /set notowl=1%; \
   hunt %; \
   ready
 

@@ -1,16 +1,8 @@
 ; /loaded tiny.macros.travelling.tf
 ;
 ; How to use EP
-;
-;
-;
-;
-;
+
 ; ### 2 ### Travelling stacks ###
-;
-;
-;
-;
 /def -p0 -mglob -h'SEND {enc}' = unlock north gate with keyring%;open north gate%;n%;close gate%;lock gate with keyring
 /def -p0 -mglob -h'SEND {lvc}' = unlock gate with keyring%;open gate%;s%;close north gate%;lock north gate with keyring
 /def -p0 -mglob -h'SEND {ggh}' = n%;nw%;n%;n%;w%;w%;w%;w
@@ -41,25 +33,41 @@
 /def -p0 -mglob -h'SEND {p3}' = w%;n%;n%;nw%;n%;ne%;n%;n%;n%;rest%;hp
 /def -p0 -mglob -h'SEND {p4}' = w%;w%;w%;w%;w%;s%;e%;sell all
 /def -p0 -mglob -h'SEND {p5}' = w%;n%;e%;e%;e%;e%;n%;e%;bank
+
+; specific travelling stacks
 /def -p0 -mglob -h'SEND {shup}' = n%;n%;nw%;n%;n%;n%;ne%;n%;n
 /def -p0 -mglob -h'SEND {shdn}' = s%;s%;sw%;s%;s%;s%;se%;s%;s
+
+; rats: ship to bogs
 /def -p0 -mglob -h'SEND {rsb}' = rsb1 %; /repeat -3 1 rsb2
 /def -p0 -mglob -h'SEND {rsb1}' = s%;se%;e%;e%;e%;e%;e%;se%;se%;se%;se%;rest%; /echo rsb2
 /def -p0 -mglob -h'SEND {rsb2}' = e%;e%;e%;e%;se%;s%;s%;s%;e%;e%;n%;n%;rest
+
+; rats: bogs to ship
 /def -p0 -mglob -h'SEND {rbs}' = rbs1 %; /repeat -3 1 rbs2
 /def -p0 -mglob -h'SEND {rbs1}' = s%;s%;w%;w%;n%;n%;n%;nw%;w%;w%;w%;w%;rest%; /echo rbs2
 /def -p0 -mglob -h'SEND {rbs2}' = nw%;nw%;nw%;nw%;w%;w%;w%;w%;w%;nw%;n%;rest
+
+; rats: ship to james
 /def -p0 -mglob -h'SEND {rsj}' = rsj1 %; /repeat -3 1 rsj2
 /def -p0 -mglob -h'SEND {rsj1}' = ne%;ne%;n%;n%;n%;n%;nw%;nw%;nw%;rest%; /echo rsj2
 /def -p0 -mglob -h'SEND {rsj2}' = n%;e%;e%;e%;e%;n%;n%;rest
+
+; rats: james to ship
 /def -p0 -mglob -h'SEND {rjs}' = rjs1 %; /repeat -3 1 rjs2
 /def -p0 -mglob -h'SEND {rjs1}' = s%;s%;w%;w%;w%;w%;s%;rest%; /echo rjs2
 /def -p0 -mglob -h'SEND {rjs2}' = se%;se%;se%;s%;s%;s%;s%;sw%;sw%;rest
+
+; rats: bogs to james
 /def -p0 -mglob -h'SEND {rbj}' = rbs1 %; /repeat -3 1 rbs2 %; /repeat -6 1 rsj1 %; /repeat -9 1 rsj2
 /def -p0 -mglob -h'SEND {rjb}' = rjs1 %; /repeat -3 1 rjs2 %; /repeat -6 1 rsb1 %; /repeat -9 1 rsb2
+
+; rats: james to nuin
 /def -p0 -mglob -h'SEND {rjn1}' = s%;s%;w%;w%;w%;w%;n%;n%;nw%;ne%;ne%;rest%; /echo rjn2
 /def -p0 -mglob -h'SEND {rjn2}' = n%;n%;n%;n%;n%;nw%;nw%;n%;n%;n
 /def -p0 -mglob -h'SEND {rjn}' = rjn1 %; /repeat -3 1 rjn2
+
+; rats: nuin to james
 /def -p0 -mglob -h'SEND {rnj1}' = s%;s%;s%;se%;se%;s%;s%;s%;s%;s%;rest%; /echo rnj2
 /def -p0 -mglob -h'SEND {rnj2}' = sw%;sw%;se%;s%;s%;e%;e%;e%;e%;n%;n
 /def -p0 -mglob -h'SEND {rnj}' = rnj1 %; /repeat -3 1 rnj2

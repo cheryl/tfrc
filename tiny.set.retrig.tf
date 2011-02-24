@@ -24,7 +24,7 @@
 
 /def -p0 -mglob -h'SEND {reempower}' = \
 ;  /if (needempower =/ 1) \
-    empower staff with %{elementvar} %; \
+    empower %{wep} with %{elementvar} %; \
     /set needempower=0 %; \
 ;  /endif
 

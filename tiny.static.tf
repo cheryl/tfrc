@@ -3,6 +3,7 @@
 /set borg=0
 /set playerfriendly=0
 /set notidle=0
+/set notowl=1
 ; (as opposed to not hunting, ie idle)
 
 ;; ### from tiny.macros.timers.tf ###
@@ -21,9 +22,9 @@
 
 ;; ### from tiny.macros.tf ###
 /set t=guard
-;/set dirvar=east
-;/set shuntsteps=0
-;/set oldshunt=0
+/set dirvar=east
+/set shuntsteps=0
+/set oldshunt=0
 
 ;; tiny.set.retrig
 ;/set needempower=1
