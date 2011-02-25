@@ -22,7 +22,7 @@
 
 ;; ### from tiny.macros.tf ###
 /set t=guard
-/set dirvar=east
+/set dirvar=go east
 /set shuntsteps=0
 /set oldshunt=0
 

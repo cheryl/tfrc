@@ -45,3 +45,4 @@
 
 /def -E'playerfriendly' -p0 -mglob -h'SEND {nocheck}' = \
     /kill %{_check_pid}
+

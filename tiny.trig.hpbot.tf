@@ -49,7 +49,8 @@
   /if (hpfull !~ 0) \
 ;; #1: if HP is less than 40%, heal.
     /if (hpnow < (hpfull * 0.4)) \
-      rej %; \
+;      rej %; \
+        cd%; \
     /endif %; \
 ;;
 ;; #2: if SP is nearly full - options
@@ -74,7 +75,8 @@
 	    rebk %; \
 	  /endif %; \
         /elseif (hpnow < (hpfull * 0.5)) \
-	  rej %; \
+;            rej %; \
+            cd%; \
 ;        /elseif (autospell =/ 1) \
 ;            magnify%; \
 ;            troff %; \

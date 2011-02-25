@@ -3,17 +3,30 @@
 ;; (2, 4, 3) action triggers
 
 /def -E'solo' -p0 -mglob -t'The combat is over.' endcombat = \
-  /if (fastrc !/ '{Butterfly|Bumblebee|Dwarf}') \
+  /if (fastrc !/ '{Butterfly|Bumblebee|Jack-O-Lantern}') \
+; if companion has already buried, fails harmlessly
+; occurs second
+    bc%; \
     get all %; \
   /endif %; \
   alignment %; \
   kt
 
 /def -E'solo' -p0 -mglob -t'* dies in fits of twitching agony.' targetdead = \
-  bc %; \
   /set fastrc=$[{L7}] %; \
-  /if (fastrc =/ '{Butterfly|Bumblebee|Dwarf|Jack-O-Lantern}') \
+  /if (fastrc =/ '{Butterfly|Bumblebee|Jack-O-Lantern}') \
+; this branch only activates for those types
+    bc %; \
     get all %; \
+  /else \
+; this branch fails harmlessly if don't have a companion
+; occurs first
+    whisper companion bury corpse%; \
+    whisper companion get all%; \
+    whisper companion exchange copper for falcon%; \
+    whisper companion exchange falcon for eagle%; \
+    whisper companion exchange eagle for crown%; \
+    whisper companion exchange crown for tri%; \
   /endif %; \
   xp
 
@@ -22,11 +35,13 @@
   /echo -a -p @{BCyellow}%{xpdiff}@{x} %; \
   /set oldxp=$[{L1}]
 
-/def -p0 -mglob -t'You see no such thing to kill here.' notarget = \
-  /set anytarget=0 %; \
-  /if (t =/ 'skeleton') \
-    shunt %; \
-  /endif
+;/def -p0 -mglob -t'You see no such thing to kill here.' notarget = \
+;  /set anytarget=0 %; \
+;  /if (t =/ '{rat|skeleton}') \
+;    /if (solo =/ 1) \
+;        shunt %; \
+;    /endif%; \
+;  /endif
 
 /def -p0 -mglob -t'* you with {his|her|its|a|the} *' settarget = \
     /set oldt=$[t]%; \
@@ -40,9 +55,15 @@
     /endif%; \
     /unset oldt
 
-/def -p0 -mglob -t'A daelid crawls into *' dropd = \
+/def -E'solo' -p0 -mglob -t'Daelid enters.' killd = \
+    /set t=daelid%; \
+    kill daelid
+
+/def -p0 -mglob -t' daelid crawl' dropd = \
     get daelid from boh %; \
-    drop daelid
+    drop daelid%; \
+    /set t=daelid%;\
+    kill daelid
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                               ;;
@@ -77,10 +98,18 @@
 ; borging auto-attack
 ;/def -E'solo' -p0 -mregexp -t'(\bt(hree|wo)\b)?black rat(s)?$' = \
 ;/def -E'solo' -p0 -mregexp -t'^ t(hree|wo) moaning skeletons$' = \
-/def -E'solo' -p0 -mregexp -t' moaning skeleton' = \
-  tog %; \
-  kt %; \
-  /repeat -2 1 tog
+;/def -E'solo' -p0 -mregexp -t' moaning skeleton' = \
+;  /kill %{_shunt_pid}%; \
+;  tog %; \
+;  kt %; \
+;  /repeat -2 1 tog
+
+; finishing it
+;/def -E'solo' -p0 -mglob -t'15 of 15 rats have now been killed.' = \
+;    tog%; \
+;    rest%; \
+;    /repeat -5 1 friends%; \
+;    finish
 
 ;////////////////////////
 ;// Intrinsic re-trigs //
@@ -98,7 +127,7 @@
 ;--------------------TRIGGERS--------------------;
 
 /def -E'notowl' -p0 -mglob -t"*'s power fades back to the ambient." reempowertrig = \
-  /set wep=$[strcat(substr({L7}, 0, (strlen({L4})-3)))] %; \
+  /set wep=$[strcat(substr({L7}, 0, (strlen({L7})-3)))] %; \
 ;  /set nt%; \
 ;  /set needempower=1 %; \
     /repeat -5 1 reempower%; \

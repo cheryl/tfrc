@@ -27,12 +27,15 @@
       /if (t =/ 'rat') \
 ; if excess SP: next line  pre-uses blast
             /if (spnow >= (spfull * 0.9)) \
-                /repeat -4 1 blast %{elementvar} at %{t} %; \
+;                /repeat -4 1 blast %{elementvar} at %{t} %; \
 ; if excess SP: next line pre-uses magnify
-            /elseif (spnow >= (spfull * 0.8)) \
-                /repeat -4 1 1m %; \
+            /elseif (spnow >= (spfull * 0.85)) \
+; previously /repeat -4 1 1m
+                1m %; \
             /elseif (spnow >= (spfull * 0.7)) \
-                /repeat -4 1 lance %; \
+; previously /repeat -4 1 lance
+;                /repeat -4 1 lance %; \
+                lance%; \
             /endif %; \
 ; if feigi: next line incorporates foresee 
 ;        ft %; \
@@ -70,12 +73,13 @@
   /set shuntsteps%; \
 ; bogs: 14.
 ; vest: 19.
-  /if (shuntsteps >= 19)%; \
-    /if (oldshunt < 19)%; \
+  /if (shuntsteps >= 14)%; \
+    /if (oldshunt < 14)%; \
       troff%; \
       dvr%; \
-      /repeat -1 4 south %; \
-      /repeat -6 1 tron%; \
+      /repeat -1 1 south %; \
+; to allow for travel time
+      /repeat -4 1 tron%; \
     /else%; \
       shuntr%; \
       ks%; \
@@ -84,15 +88,17 @@
   /endif
 
 /def -p0 -mglob -h'SEND {shuntr}' = \
-    /kill _shunt_pid%; \
+    troff%; \
+    /kill %{_shunt_pid}%; \
     /set anytarget=1%; \
-    /set shuntsteps
+    /set shuntsteps%; \
+    /repeat -2 1 tron
 
 /def -p0 -mglob -h'SEND {dvr}' = \
-        /if (dirvar =/ '{east|e}') \
-                /set dirvar=go west %; \
-        /elseif (dirvar =/ '{west|e}') \
-                /set dirvar=go east %; \
+        /if (dirvar =/ 'go east') \
+                /set dirvar=go west%; \
+        /elseif (dirvar =/ 'go west') \
+                /set dirvar=go east%; \
         /endif %; \
         /set oldshunt=$[shuntsteps]%; \
         /set shuntsteps=0%; \

@@ -49,7 +49,5 @@
     /setdecapitalise %3%; \
     /set target=$[t]%; \
     /set t=$[oldt]%; \
-    give all stone to %{target}%; \
-    t %{target} I'm idle.
 ; end of beep trigger
 
