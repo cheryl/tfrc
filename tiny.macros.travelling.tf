@@ -33,6 +33,8 @@
 /def -p0 -mglob -h'SEND {p3}' = w%;n%;n%;nw%;n%;ne%;n%;n%;n%;rest%;hp
 /def -p0 -mglob -h'SEND {p4}' = w%;w%;w%;w%;w%;s%;e%;sell all
 /def -p0 -mglob -h'SEND {p5}' = w%;n%;e%;e%;e%;e%;n%;e%;bank
+/def -p0 -mglob -h'SEND {lluis}' = s%;s%;u%;n%;n%;e%;e%;o%;e
+/def -p0 -mglob -h'SEND {gluis}' = o%;w%;w%;w%;s%;s%;d%;n%;n
 
 ; specific travelling stacks
 /def -p0 -mglob -h'SEND {shup}' = n%;n%;nw%;n%;n%;n%;ne%;n%;n
@@ -102,6 +104,7 @@
   ph 9 falcon %; \
   exchange falcon for copper %; \
   ph 9 copper
+
 ;
 ;
 ; directions for ryu mountain
@@ -122,8 +125,7 @@
 /def -p0 -mglob -h'SEND {ryudown2}' = d %; sw %; w %; nw %; rest %; hp
 /def -p0 -mglob -h'SEND {ryu4}' = w %; u %; rest %; hp
 /def -p0 -mglob -h'SEND {ryudown1}' = d %; e %; rest %; hp
-;
-;
+
 ;
 ;directions for searching fields
 ;(assume start with full EP)
@@ -135,5 +137,37 @@
 /def -p0 -mglob -h'SEND {v5}' = s%; s%; s%; s%; sr%; sr%; w%; sr%; sr%; w%; sr%; sr
 /def -p0 -mglob -h'SEND {v6}' = n%; n%; w%; w%; s%; s
 /def -p0 -mglob -h'SEND {v7}' = sr%; sr%; w%; sr%; sr%; w%; sr%; sr%; n%; n%; w%; w%; /echo -a -p @{Cyellow}at fearn@{x}
+
 ;
+; quert wonderstone
 ;
+
+/def -p0 -mglob -h'SEND {cquert}' = \
+    mt quert%; \
+    move boulder%; \
+    /repeat -2 2 quertsearch%; \
+    /repeat -6 1 quertfinish
+
+/def -p0 -mglob -h'SEND {quertsearch}' = \
+    dig hole%; \
+    d%; \
+    s%; \
+    s%; \
+    get stone%; \
+    n%; \
+    n%; \
+    u%; \
+    move boulder%; \
+
+/def -p0 -mglob -h'SEND {quertfinish}' = \
+    keep stone%; \
+    mt beithe%; \
+    rest%; \
+    rr
+
+;roc's chick at top of oak (don't attack chicks unless you want to die).
+;dive with fish for carp in akane river, search cave.
+;ricecakes in the north house's kitchen cellar.
+;fireplace stuff after killing fisherman's wife.
+
+

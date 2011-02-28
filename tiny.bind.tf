@@ -4,14 +4,14 @@
 ; no F1
 /def -b'OQ' = x %; hp %; gl
 /def -b'OR' = viewguard
-/def -b'OS' = /ps %; b
+/def -b'OS' = /ps
 
 /def -b'[15~' = mt
 /def -b'[17~' = ft
 /def -b'[18~' = 1l
 /def -b'[19~' = cd
 
-/def -b'[20~' = gboh %; sa %; cheavy
+/def -b'[20~' = cge %; gboh %; sa %; cheavy
 /def -b'[21~' = sga
 /def -b'[23~' = wealth %; lev
 /def -b'[24~' = dw %; users

@@ -3,12 +3,12 @@
 ;; (2, 4, 3) action triggers
 
 /def -E'solo' -p0 -mglob -t'The combat is over.' endcombat = \
-  /if (fastrc !/ '{Butterfly|Bumblebee|Jack-O-Lantern}') \
+;  /if (fastrc !/ '{Butterfly|Bumblebee|Dwarf|Jack-O-Lantern}') \
 ; if companion has already buried, fails harmlessly
 ; occurs second
-    bc%; \
-    get all %; \
-  /endif %; \
+;    bc%; \
+;    get all %; \
+;  /endif %; \
   alignment %; \
   kt
 
@@ -21,12 +21,9 @@
   /else \
 ; this branch fails harmlessly if don't have a companion
 ; occurs first
-    whisper companion bury corpse%; \
-    whisper companion get all%; \
-    whisper companion exchange copper for falcon%; \
-    whisper companion exchange falcon for eagle%; \
-    whisper companion exchange eagle for crown%; \
-    whisper companion exchange crown for tri%; \
+;    cfin%; \
+    bc %; \
+    get all %; \
   /endif %; \
   xp
 
@@ -55,16 +52,6 @@
     /endif%; \
     /unset oldt
 
-/def -E'solo' -p0 -mglob -t'Daelid enters.' killd = \
-    /set t=daelid%; \
-    kill daelid
-
-/def -p0 -mglob -t' daelid crawl' dropd = \
-    get daelid from boh %; \
-    drop daelid%; \
-    /set t=daelid%;\
-    kill daelid
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                               ;;
 ;;  CHARACTER-SPECIFIC TRIGGERS  ;;
@@ -76,9 +63,7 @@
 
 ;/def -p0 -mglob -t'You focus your internal heat for a last brief moment *' reinhale = /repeat -120 1 bi %; /echo -a -p @{BCyellow}Breath exhale!@{x}
 
-/def -E'playerfriendly' -p0 -mregexp -t'^Cobalt enters.$' zap = kazap cobalt
-
-/def -p0 -mglob -t'Araska is attempting to locate your astral signature.' arastral = /repeat -1 1 allow araska
+;/def -E'playerfriendly' -p0 -mregexp -t'^Cobalt enters.$' zap = kazap cobalt
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;                          ;;
@@ -95,7 +80,7 @@
 ;    ck %; \
 ;    kt
 
-; borging auto-attack
+; borging auto-attack for rats
 ;/def -E'solo' -p0 -mregexp -t'(\bt(hree|wo)\b)?black rat(s)?$' = \
 ;/def -E'solo' -p0 -mregexp -t'^ t(hree|wo) moaning skeletons$' = \
 ;/def -E'solo' -p0 -mregexp -t' moaning skeleton' = \
@@ -104,12 +89,17 @@
 ;  kt %; \
 ;  /repeat -2 1 tog
 
-; finishing it
+; finishing borg for rats
 ;/def -E'solo' -p0 -mglob -t'15 of 15 rats have now been killed.' = \
 ;    tog%; \
 ;    rest%; \
 ;    /repeat -5 1 friends%; \
 ;    finish
+
+/def -E'solo' -p0 -mglob -t'You search about the muck and garbage and are disgusted as a rat pops out!' = \
+    /set t rat%; \
+    ln %{t}%;\
+    k %{t}
 
 ;////////////////////////
 ;// Intrinsic re-trigs //
@@ -117,14 +107,20 @@
 
 /def -p0 -mglob -t'Your mind clouds and you lose focus on *' reforesee = /repeat -61 1 ft
 
-/def -p0 -mregexp -t'^You close your eyes and (clench your fist around the stone|draw energy from your surroundings).$' reharden = /repeat -0:2:0 1 /echo -a -p @{BCblack}Harden is ready!@{x}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;                                    ;;
+;;  Only if hunting geared (not owl)  ;;
+;;                                    ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-/def -p0 -mglob -t'You unleash a humming blast of moonlight *' remb = \
+
+/def -E'notowl' -p0 -mglob -t'You unleash a humming blast of moonlight *' remb = \
     /set no_moonbathe=1%; \
     /repeat -151 1 /echo -a -p @{BCcyan} You can moonbathe again.@{x}%; \
     /repeat -151 1 /unset no_moonbathe %; \
 
-;--------------------TRIGGERS--------------------;
+;
+/def -E'notowl' -p0 -mregexp -t'^You close your eyes and (clench your fist around the stone|draw energy from your surroundings).$' reharden = /repeat -0:2:0 1 /echo -a -p @{BCblack}Harden is ready!@{x}
 
 /def -E'notowl' -p0 -mglob -t"*'s power fades back to the ambient." reempowertrig = \
   /set wep=$[strcat(substr({L7}, 0, (strlen({L7})-3)))] %; \
@@ -132,12 +128,6 @@
 ;  /set needempower=1 %; \
     /repeat -5 1 reempower%; \
 ;  /set nt=1
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;                                    ;;
-;;  Only if hunting geared (not owl)  ;;
-;;                                    ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 /def -E'notowl' -p0 -mglob -t'Tough bark covers * of your skin.' barkstatus = \
   /set bstatus=$[strcat(substr({L4}, 0, (strlen({L4})-1)))] %; \

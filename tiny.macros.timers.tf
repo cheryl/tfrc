@@ -46,3 +46,7 @@
 /def -E'playerfriendly' -p0 -mglob -h'SEND {nocheck}' = \
     /kill %{_check_pid}
 
+/def -p0 -mglob -h'SEND {rr}' = \
+;    /repeat -0:10:00 1 /echo -a -p @{BCblack} ceirt again!
+    /repeat -0:16:00 1 /echo -p -a @{BCyellow} 16 mins up
+

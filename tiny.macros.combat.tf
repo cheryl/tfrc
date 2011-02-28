@@ -11,6 +11,10 @@
 /def -p0 -mglob -h'SEND {blt}' = blast %{elementvar} at %{t}
 /def -p0 -mglob -h'SEND {mt}' = magnify %{t}
 /def -p0 -mglob -h'SEND {ct}' = whisper h interrupt %{t}
+/def -p0 -mglob -h'SEND {cfin}' = \
+    whisper companion get all from corpse%; \
+    /repeat -3 1 whisper companion give all coins to en%; \
+
 /def -p0 -mglob -h'SEND {kt}' = /set anytarget=1 %; \
   /repeat -3 1 kill %{t} %; \
   /repeat -5 1 ktm
@@ -24,26 +28,27 @@
 ; if just loaded: next line cancels 0/0 trigger
         /if (spnow !~ "0") \
 ; if hunting rats: next line restricts the following to rats
-      /if (t =/ 'rat') \
+;      /if (t =/ 'rat') \
 ; if excess SP: next line  pre-uses blast
-            /if (spnow >= (spfull * 0.9)) \
+;            /if (spnow >= (spfull * 0.9)) \
 ;                /repeat -4 1 blast %{elementvar} at %{t} %; \
 ; if excess SP: next line pre-uses magnify
-            /elseif (spnow >= (spfull * 0.85)) \
+;            /elseif (spnow >= (spfull * 0.85)) \
 ; previously /repeat -4 1 1m
-                1m %; \
-            /elseif (spnow >= (spfull * 0.7)) \
+;                1m %; \
+;            /elseif (spnow >= (spfull * 0.7)) \
 ; previously /repeat -4 1 lance
 ;                /repeat -4 1 lance %; \
-                lance%; \
-            /endif %; \
+;                lance%; \
+;            /endif %; \
 ; if feigi: next line incorporates foresee 
 ;        ft %; \
 ; if hunting rats: next line restricts the previous to rats
-      /endif %; \
+;      /endif %; \
         /endif %; \
     /endif %; \
   /endif
+
 /def -p0 -mglob -h'SEND {evl}' = /set elementvar=lightning
 /def -p0 -mglob -h'SEND {evi}' = /set elementvar=ice
 /def -p0 -mglob -h'SEND {evf}' = /set elementvar=fire

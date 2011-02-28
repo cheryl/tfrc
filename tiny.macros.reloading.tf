@@ -44,6 +44,7 @@
   /endif
 
 /def -p0 -mglob -h'SEND {ships}' = ship%; rest%; tron %; /load tiny.trig.shipbot.tf %; cheavy %; xfal
+
 /def -p0 -mglob -i -h'SEND {reload}' = /purge %; \
     /load tiny.bind.tf %; \
     /load tiny.macros.reloading.tf %; \
@@ -69,6 +70,7 @@
             /endif %; \
         /endif %; \
     /endif %; \
+    /load tiny.trig.common.tf %; \
     /load tiny.trig.gags.tf %; \
     tron
 

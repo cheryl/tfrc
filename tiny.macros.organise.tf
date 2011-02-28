@@ -19,10 +19,11 @@
   exchange eagle for crown %; \
   exchange crown for tri
 /def -p0 -mglob -h'SEND {bank}' = \
+  cge coins%; \
   balance %; \
   gboh coins %; \
-  deposit all %; \
-  balance
+  /repeat -3 1 deposit all %; \
+  /repeat -4 1 balance
 ;
 ;
 ;
