@@ -6,3 +6,12 @@ programming techinques.  Any of the *.tf files can be loaded directly
 with /load.  Read the comments at the top of each file for specific
 instructions.
 
+                          So what is this?
+
+This is a repository of Cheryl's tf script hooks, triggers and 
+bindings. tf script is the custom language of tf, or tinyfugue. 
+Tinyfugue is a text-based MUD client. MUDs are Multi-User-Dungeons.
+Further info is on wikipedia.
+
+Bar all that: I occasionally play a game called Astaria.  These are 
+the controls I use to play it.
