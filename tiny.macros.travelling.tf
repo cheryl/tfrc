@@ -143,10 +143,11 @@
 ;
 
 /def -p0 -mglob -h'SEND {cquert}' = \
+    e%; \
     mt quert%; \
     move boulder%; \
     /repeat -2 2 quertsearch%; \
-    /repeat -6 1 quertfinish
+    /repeat -8 1 quertfinish
 
 /def -p0 -mglob -h'SEND {quertsearch}' = \
     dig hole%; \
@@ -162,12 +163,53 @@
 /def -p0 -mglob -h'SEND {quertfinish}' = \
     keep stone%; \
     mt beithe%; \
+    w%; \
     rest%; \
-    rr
+    rq
 
 ;roc's chick at top of oak (don't attack chicks unless you want to die).
 ;dive with fish for carp in akane river, search cave.
 ;ricecakes in the north house's kitchen cellar.
 ;fireplace stuff after killing fisherman's wife.
 
+
+/def -p0 -mglob -h'SEND {sakai2}' = \
+    remove shoes%; \
+    e%;\
+    e%;\
+    move sacks%;\
+    open trapdoor%;\
+    d%;\
+    ga%;\
+    u%;\
+    w%;\
+    w%;\
+    leave%;\
+    rest
+
+/def -p0 -mglob -h'SEND {sakai3}' = \
+    climb oak%; \
+    search branches%;\
+    get chick%;\
+    u%;\
+    nest%;\
+    put chick in nest%;\
+    search%;\
+    get all%;\
+    branch%;\
+    d%;\
+    d%;\
+    rest
+
+/def -p0 -mglob -h'SEND {sakai4}' = \
+    swim river%;\
+    dive%;\
+    throw fish downstream%;\
+    enter cave%;\
+    search%;\
+    get all%;\
+    river%;\
+    u%;\
+    w%;\
+    rest
 
