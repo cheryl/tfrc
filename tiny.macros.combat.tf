@@ -16,6 +16,7 @@
     /repeat -3 1 whisper companion give all coins to en%; \
 
 /def -p0 -mglob -h'SEND {kt}' = /set anytarget=1 %; \
+    ck%;\
   /repeat -3 1 kill %{t} %; \
   /repeat -5 1 ktm
 /def -p0 -mglob -h'SEND {ktm}' = \

@@ -58,8 +58,8 @@
 ;;                               ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;/def -p0 -mregexp -t'^Laurealasse fl(ap|utter)s' = \
-;    /echo -a -p @{BCblack}--> Hit landed! <--@{x}%; \
+/def -p0 -mregexp -t'^Laurealasse fl(ap|utter)s' = \
+    /echo -a -p @{BCblack}--> Hit landed! <--@{x}%; \
 
 ;/def -p0 -mglob -t'You focus your internal heat for a last brief moment *' reinhale = /repeat -120 1 bi %; /echo -a -p @{BCyellow}Breath exhale!@{x}
 

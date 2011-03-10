@@ -11,7 +11,7 @@
 /def -b'[18~' = 1l
 /def -b'[19~' = cd
 
-/def -b'[20~' = cge %; gboh %; sa %; cheavy
+/def -b'[20~' = gboh %; sa %; cheavy
 /def -b'[21~' = sga
 /def -b'[23~' = wealth %; lev
 /def -b'[24~' = dw %; users

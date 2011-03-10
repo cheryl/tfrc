@@ -48,7 +48,7 @@
 
 /def -p0 -mglob -h'SEND {r1}' = \
 ;    /repeat -0:10:00 1 /echo -a -p @{BCblack} ceirt again!
-    /repeat -0:16:00 1 /echo -p -a @{BCyellow} 16 mins up
+    /repeat -0:15:00 1 /echo -p -a @{BCyellow} 15 mins up
 
 /def -p0 -mglob -h'SEND {r2}' = \
 ;    /repeat -0:10:00 1 /echo -a -p @{BCblack} ceirt again!
@@ -56,5 +56,5 @@
 
 /def -p0 -mglob -h'SEND {rq}' = \
 ;    /repeat -0:10:00 1 /echo -a -p @{BCblack} ceirt again!
-    /repeat -0:16:00 1 cquert
+    /repeat -0:15:30 1 cquert
 

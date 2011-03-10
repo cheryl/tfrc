@@ -143,7 +143,6 @@
 ;
 
 /def -p0 -mglob -h'SEND {cquert}' = \
-    e%; \
     mt quert%; \
     move boulder%; \
     /repeat -2 2 quertsearch%; \
@@ -163,7 +162,6 @@
 /def -p0 -mglob -h'SEND {quertfinish}' = \
     keep stone%; \
     mt beithe%; \
-    w%; \
     rest%; \
     rq
 
