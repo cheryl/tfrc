@@ -143,6 +143,7 @@
 ;
 
 /def -p0 -mglob -h'SEND {cquert}' = \
+    rq%; \
     mt quert%; \
     move boulder%; \
     /repeat -2 2 quertsearch%; \
@@ -162,8 +163,7 @@
 /def -p0 -mglob -h'SEND {quertfinish}' = \
     keep stone%; \
     mt beithe%; \
-    rest%; \
-    rq
+    rest
 
 ;roc's chick at top of oak (don't attack chicks unless you want to die).
 ;dive with fish for carp in akane river, search cave.
@@ -183,7 +183,8 @@
     w%;\
     w%;\
     leave%;\
-    rest
+    rest%; \
+    hp
 
 /def -p0 -mglob -h'SEND {sakai3}' = \
     climb oak%; \
@@ -197,7 +198,8 @@
     branch%;\
     d%;\
     d%;\
-    rest
+    rest%; \
+    hp
 
 /def -p0 -mglob -h'SEND {sakai4}' = \
     swim river%;\
@@ -209,5 +211,75 @@
     river%;\
     u%;\
     w%;\
-    rest
+    rest%; \
+    hp
+
+/def -p0 -mglob -h'SEND {saks1}' = \
+    saks1a%;\
+    /repeat -2 1 saks1b
+/def -p0 -mglob -h'SEND {saks3}' = \
+    saks3a%; \
+    /repeat -2 1 saks3b
+
+/def -p0 -mglob -h'SEND {saks1a}' = \
+    s%;\
+    e%;\
+    e%;\
+    s%;\
+    s%;\
+    s%;\
+    s%;\
+    s%;\
+    s%;\
+    s%; \
+    ii
+
+/def -p0 -mglob -h'SEND {saks1b}' = \
+    e%;\
+    n%;\
+    sa%;\
+    s%;\
+    e%;\
+    s%;\
+    sa%;\
+    n%;\
+    e%;\
+    e%; \
+    rest%; \
+    hp
+
+/def -p0 -mglob -h'SEND {saks2}' = \
+    cii%; \
+    gboh%; \
+    sa%; \
+    w%;\
+    w%;\
+    w%;\
+    w%;\
+    w%;\
+    rest%; \
+    hp
+
+/def -p0 -mglob -h'SEND {saks3a}' = \
+    cge coins%;\
+    w%;\
+    s%;\
+    bank
+
+/def -p0 -mglob -h'SEND {saks3b}' = \
+    n%;\
+    e%;\
+    e%;\
+    n%;\
+    n%;\
+    n%;\
+    n%;\
+    n%;\
+    n%;\
+    n%;\
+    w%;\
+    w%;\
+    n%;\
+    rest%; \
+    hp
 

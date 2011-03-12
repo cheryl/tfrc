@@ -47,8 +47,13 @@
         /set t=$[oldt]%; \
 ; do nothing
     /elseif (t =/ "bog") \
-; set to another variable
         /set t=turtle %; \
+    /elseif (t =/ "carrion") \
+        /set t=crawler %; \
+    /elseif (t =/ "{old|worker|harvester}") \
+        /set t=peasant %; \
+    /elseif (t =/ "{sting|moray}") \
+        /set t=fish %; \
     /endif%; \
     /unset oldt
 
@@ -96,10 +101,10 @@
 ;    /repeat -5 1 friends%; \
 ;    finish
 
-/def -E'solo' -p0 -mglob -t'You search about the muck and garbage and are disgusted as a rat pops out!' = \
-    /set t rat%; \
-    ln %{t}%;\
-    k %{t}
+;/def -E'solo' -p0 -mglob -t'You search about the muck and garbage and are disgusted as a rat pops out!' = \
+;    /set t rat%; \
+;    ln %{t}%;\
+;    k %{t}
 
 ;////////////////////////
 ;// Intrinsic re-trigs //
